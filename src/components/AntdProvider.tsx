@@ -34,7 +34,7 @@ export function AntdProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <StyleProvider hashPriority="high" cache={cache}>
+    <StyleProvider layer cache={cache}>
       {render}
     </StyleProvider>
   );
