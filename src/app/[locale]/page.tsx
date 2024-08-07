@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 
+import Ali from '@/components/Ali';
 import FormComponent from '@/components/FormComponent';
 
 export default function Page() {
@@ -11,6 +12,7 @@ export default function Page() {
         {t('desc')}
       </h1>
       <FormComponent />
+      <Ali />
     </section>
   );
 }

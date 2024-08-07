@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import {
   Button,
   Cascader,
@@ -15,9 +17,16 @@ import {
   Upload,
 } from 'antd';
 
+// import './styles.scss';
+// import styles from './styles.module.scss';
+import { useStyles } from './FormComponent.styles';
 import Icons from './Icons';
 
 export default function FormComponent() {
+  const [checked, setChecked] = useState(false);
+
+  const { styles, cx, theme } = useStyles(checked);
+
   return (
     <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14 }} layout="horizontal">
       <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
@@ -65,7 +74,7 @@ export default function FormComponent() {
         />
       </Form.Item>
       <Form.Item label="DatePicker">
-        <DatePicker />
+        <DatePicker className={styles.datepicker} />
       </Form.Item>
       <Form.Item label="RangePicker">
         <DatePicker.RangePicker />
@@ -77,7 +86,11 @@ export default function FormComponent() {
         <Input.TextArea rows={4} />
       </Form.Item>
       <Form.Item label="Switch" valuePropName="checked">
-        <Switch />
+        <Switch
+          value={checked}
+          onChange={(value) => setChecked(value)}
+          className={cx(styles.switch, checked && styles.switch_active)}
+        />
       </Form.Item>
       <Form.Item label="Upload" valuePropName="fileList">
         <Upload action="/upload.do" listType="picture-card">
